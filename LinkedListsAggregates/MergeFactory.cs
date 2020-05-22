@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace LinkedListsAggregates
 {
-    public class MergeFactory<T> where T: IComparable<T>, IEquatable<T>
+    public class MergeFactory<T> where T: IComparable<T>
     {
         private readonly LinkedList<T>[] _sourceLists;
 
