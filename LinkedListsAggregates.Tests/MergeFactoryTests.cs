@@ -39,6 +39,22 @@ namespace LinkedListsAggregates.Tests
         }
 
         [Fact]
+        public void MergeTestSimilarLists_Positive()
+        {
+            var list_1 = new LinkedList<int>(new[] {1, 3, 5, 7});
+            var list_2 = new LinkedList<int>(new[] {1, 3, 5, 7});
+            var list_3 = new LinkedList<int>(new[] {1, 3, 5, 7});
+
+            var expectedResultSource = list_1.Concat(list_2).Concat(list_3).OrderBy(x => x).ToList();
+            var expectedResult = new LinkedList<int>(expectedResultSource);
+
+            var factory = new MergeFactory<int>(list_1, list_2, list_3);
+            var actualResult = factory.Merge();
+
+            actualResult.ShouldBe(expectedResult);
+        }
+
+        [Fact]
         public void CatchEmptyListsException()
         {
             var expectedExceptionMessage = "No lists were found";
